@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <title>Employee</title>
+</head>
+<body>
+<div class="container">
+    <H3>Employee</H3>
+    <a th:href="@{/create}">Create New Employee</a>
+    <table id="blogsList" class="table table-light table-striped table-bordered table-hover">
+        <tr>
+            <th scope="row">Name</td>
+            <th scope="row">Gender</td>
+            <th scope="row">Age</td>
+            <th scope="row">Address</td>
+            <th scope="row">Email</td>
+            <th scope="row">Edit</td>
+            <th scope="row">Delete</td>
+        </tr>
+        <th:block th:each="employee:${employees}">
+            <tr>
+                <td><a th:href="@{/detail/__${employee._id}__}" ><span th:text="${employee.name}" ></span></a></td>
+                <td th:text="${employee.gender}"></td>
+                <td th:text="${employee.age}"></td>
+                <td th:text="${employee.address}"></td>
+                <td th:text="${employee.email}"></td>
+                <td><a th:href="@{/edit/__${employee._id}__}">Edit</a></td>
+                <td><a th:href="@{/delete/__${employee._id}__}">Delete</a></td>
+            </tr>
+        </th:block>
+
+    </table>
+</div>
+</body>
+</html>
